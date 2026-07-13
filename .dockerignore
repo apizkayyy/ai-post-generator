@@ -1,0 +1,28 @@
+# secrets
+.env
+.env.*
+
+# python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# git
+.git
+.gitignore
+
+# local dev
+venv/
+.envrc
+
+# logs
+logs/
+*.log
+
+# tests (optional, not needed in image)
+app/test/
+
+# OS files
+.DS_Store
+
+docker-compose.yml

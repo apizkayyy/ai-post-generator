@@ -1,0 +1,11 @@
+[33mcommit 5ebee38bf03eb03081a35728109e43b51b109534[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Muhammad Hafiz <muhammadhafiz1502@gmail.com>
+Date:   Mon Jul 13 14:06:38 2026 +0800
+
+    Remove environment secrets and update gitignore
+
+[33mcommit 7f7d0e5779269844a63d22cf28412187e39bf207[m
+Author: Muhammad Hafiz <muhammadhafiz1502@gmail.com>
+Date:   Mon Jul 13 12:04:00 2026 +0800
+
+    AI Post Generator v1 core pipeline

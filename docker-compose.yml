@@ -1,0 +1,19 @@
+services:
+
+  ai-post-generator:
+
+    build:
+      context: .
+
+    container_name:
+      ai-post-generator
+
+    ports:
+
+      - "8082:8082"
+
+    env_file:
+      - .env
+      -
+    restart:
+      unless-stopped
