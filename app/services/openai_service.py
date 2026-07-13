@@ -1,111 +1,36 @@
 from openai import AsyncOpenAI
 
 from app.core.config import settings
+from app.models.schemas import GeneratedPost
 
 
 client = AsyncOpenAI(
     api_key=settings.OPENAI_API_KEY
 )
 
-POST_SCHEMA = {
-    "type": "object",
 
-    "properties": {
+async def generate(prompt: str):
 
-        "hooks": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-
-
-        "posts": {
-
-            "type": "array",
-
-            "items": {
-
-                "type": "object",
-
-                "properties": {
-
-                    "number": {
-                        "type": "integer"
-                    },
-
-                    "content": {
-                        "type": "string"
-                    }
-
-                },
-
-                "required": [
-                    "number",
-                    "content"
-                ],
-
-                "additionalProperties": False
-            }
-        },
-
-
-        "cta": {
-            "type": "string"
-        }
-
-    },
-
-
-    "required": [
-        "hooks",
-        "posts",
-        "cta"
-    ],
-
-
-    "additionalProperties": False
-}
-
-
-
-async def generate(prompt:str):
-
-
-    response = await client.responses.create(
+    response = await client.responses.parse(
 
         model=settings.OPENAI_MODEL,
 
-
-        instructions=
-        """
+        instructions="""
         Anda adalah content creator affiliate Malaysia.
-        Hasilkan content Threads dalam Bahasa Melayu.
-        """,
 
+        Tugas:
+        - Buat content Threads yang menarik
+        - Gunakan Bahasa Melayu Malaysia
+        - Gunakan storytelling
+        - Jangan terlalu hard selling
+        - Gunakan hook yang kuat
+        """,
 
         input=prompt,
 
-
         max_output_tokens=settings.MAX_TOKENS,
 
-
-        text={
-
-            "format": {
-
-                "type": "json_schema",
-
-                "name": "affiliate_post",
-
-                "strict": True,
-
-                "schema": POST_SCHEMA
-
-            }
-
-        }
-
+        text_format=GeneratedPost
     )
 
 

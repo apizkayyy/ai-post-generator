@@ -1,7 +1,7 @@
 import json
 import httpx
 
-from app.core.config import settings
+from  app.core.config import settings
 
 async def generate(prompt: str):
 
